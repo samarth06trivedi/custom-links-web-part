@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "custom-link-webpart-client-side-solution",
+    "id": "f606de7f-d004-49e8-86e8-aa79b3f5a484",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "custom-link-webpart description"
+      },
+      "longDescription": {
+        "default": "custom-link-webpart description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "custom-link-webpart Feature",
+        "description": "The feature that activates elements of the custom-link-webpart solution.",
+        "id": "b726d89d-23e1-4d02-b27d-8aa369fe6aef",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/custom-link-webpart.sppkg"
+  }
+}
