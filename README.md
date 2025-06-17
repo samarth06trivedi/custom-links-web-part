@@ -1,73 +1,178 @@
-# custom-link-webpart
 
-## Summary
+# CustomLinks SPFx Web Part
 
-Short summary on functionality and used technologies.
-
-[picture of the solution in action, if possible]
-
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.18.2-green.svg)
-
-## Applies to
-
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
-
-## Prerequisites
-
-> Any special pre-requisites?
-
-## Solution
-
-| Solution    | Author(s)                                               |
-| ----------- | ------------------------------------------------------- |
-| folder name | Author details (name, company, twitter alias with link) |
-
-## Version history
-
-| Version | Date             | Comments        |
-| ------- | ---------------- | --------------- |
-| 1.1     | March 10, 2021   | Update comment  |
-| 1.0     | January 29, 2021 | Initial release |
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+A SharePoint Framework (SPFx) web part that allows users to configure and display custom links on a SharePoint page. Built using React and SPFx v1.18.2, this web part supports modern SharePoint sites and offers property pane customization using PnP controls.
 
 ---
 
-## Minimal Path to Awesome
+## 📁 Project Structure
 
-- Clone this repository
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - **npm install**
-  - **gulp serve**
+```
+custom-link-webpart/
+├── config/                    # SPFx config files
+├── sharepoint/               # Deployment package (.sppkg)
+├── src/                      # Source code (React + TypeScript)
+│   └── webparts/
+│       └── customLinks/      # Main web part implementation
+├── gulpfile.js               # Gulp tasks
+├── package.json              # Project metadata & dependencies
+├── README.md                 # Project documentation
+└── tsconfig.json             # TypeScript config
+```
 
-> Include any additional steps as needed.
+---
 
-## Features
+## 🚀 Features
 
-Description of the extension that expands upon high-level summary above.
+- Add and manage custom links via property pane.
+- Icon/image support for each link.
+- Support for modern SharePoint pages.
+- Built with React 17 and SPFx 1.18.2.
+- Uses PnP SPFx reusable controls and property pane components.
 
-This extension illustrates the following concepts:
+---
 
-- topic 1
-- topic 2
-- topic 3
+## 🧰 Tech Stack
 
-> Notice that better pictures and documentation will increase the sample usage and the value you are providing for others. Thanks for your submissions advance.
+| Tool/Library                          | Version     |
+|--------------------------------------|-------------|
+| **SPFx (SharePoint Framework)**      | 1.18.2      |
+| **React**                            | 17.0.1      |
+| **TypeScript**                       | 4.7.4       |
+| **PnP JS (@pnp/sp)**                 | ^1.3.11     |
+| **PnP SPFx Controls**                | ~3.11.0     |
+| **Node.js**                          | 16.20.2     |
+| **Gulp**                             | 4.0.2       |
 
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+---
 
-## References
+## ⚙️ Setup Instructions
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+### 1. 📦 Install Node.js
+
+Make sure you have Node.js **v16.20.2** installed (other supported versions: `>=16.13.0 <17.0.0 || >=18.17.1 <19.0.0`).
+
+You can install it via [Node.js official site](https://nodejs.org/) or use Volta:
+
+```bash
+volta install node@16.20.2
+```
+
+---
+
+### 2. 📁 Clone the repository
+
+```bash
+git clone https://samarthtrivedi.redant@bitbucket.org/ansul-atlassian/custom-links.git
+cd custom-link-webpart
+```
+
+---
+
+### 3. 🛠 Install dependencies
+
+```bash
+npm install
+```
+
+> This will also run `npx npm-force-resolutions` to apply package resolutions.
+
+---
+
+### 4. 💻 Run the project locally (Workbench)
+
+#### Build and launch the local dev server
+
+```bash
+gulp clean
+gulp build
+gulp serve
+```
+
+This will start a local development server and open a browser window. If not, visit:
+
+```
+https://localhost:4321/temp/workbench.html
+```
+
+> This local workbench simulates the SharePoint environment for development and testing without deploying to SharePoint Online.
+
+---
+
+### 5. 🌐 Run on SharePoint Online Workbench
+
+1. Open your `config/serve.json` and make sure the `initialPage` is set correctly:
+```json
+{
+  "initialPage": "https://{your-tenant}.sharepoint.com/sites/{site-name}/_layouts/15/workbench.aspx"
+}
+```
+
+2. Run:
+
+```bash
+gulp build
+gulp serve
+```
+
+3. Navigate to the specified SharePoint Online workbench URL in your browser.
+
+---
+
+### 6. 📦 Bundle for production
+
+```bash
+gulp bundle --ship
+```
+
+---
+
+### 7. 📁 Package the solution
+
+```bash
+gulp package-solution --ship
+```
+
+> The `.sppkg` file will be created at:
+> ```
+> ./sharepoint/solution/custom-link-webpart.sppkg
+> ```
+
+---
+
+### 8. 🚀 Deploy to App Catalog
+
+1. Go to your [SharePoint App Catalog](https://{your-tenant}.sharepoint.com/sites/apps).
+2. Upload `custom-link-webpart.sppkg` file.
+3. Click "Deploy" when prompted.
+
+---
+
+## 🧪 Test in SharePoint
+
+1. Add the **CustomLinks** web part to any modern SharePoint page.
+2. Configure it using the property pane (add titles, links, icons).
+3. Save and publish the page.
+
+---
+
+## 🔍 Linting & Testing
+
+Run linting:
+```bash
+npm run lint
+```
+
+Run unit tests:
+```bash
+npm test
+```
+
+---
+
+## 👨‍💻 Author
+
+Developed by Samarth Trivedi  
+For any queries, reach out at [samarthtrivedi.redant@gmail.com]
+
+---
