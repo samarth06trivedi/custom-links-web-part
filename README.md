@@ -173,6 +173,6 @@ npm test
 ## 👨‍💻 Author
 
 Developed by Samarth Trivedi  
-For any queries, reach out at [samarthtrivedi.redant@gmail.com]
+For any queries, reach out at [samarth2004trivedi@gmail.com]
 
 ---
